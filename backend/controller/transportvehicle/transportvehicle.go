@@ -29,11 +29,11 @@ func GetAlltransportvehicle(c *gin.Context) {
 func Gettransportvehicle(c *gin.Context) {
 	ID := c.Param("id")
 	var vehicle entity.TransportVehicle
-	
+
 	db := config.DB()
 
 	// ค้นหารถขนส่งโดย ID
-	results := db.First(&vehicle, ID)
+	results := db.Preload("transportcompanies").First(&vehicle, ID)
 
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})

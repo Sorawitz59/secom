@@ -33,8 +33,8 @@ func Gettransportcompanies(c *gin.Context) {
 	db := config.DB()
 
 	// ค้นหาบริษัทขนส่งโดย ID
-	results := db.Preload("transportvehicle").First(&transportvehicle, ID)
-
+	results := db.First(&company, ID)
+	
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
 		return
