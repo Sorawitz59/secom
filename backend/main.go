@@ -46,6 +46,10 @@ func main() {
 
    r.POST("/signin", users.SignIn)
 
+   r.GET("/transportcompanies", transportcompanies.GetAlltransportcompanies)
+    r.DELETE("/transportcompanies/:id", transportcompanies.DeleteTransportCompanies)   
+    r.POST("/transportcompanies", transportcompanies.CreateTransportCompanies)       
+    r.PUT("/transportcompanies/:id", transportcompanies.UpdateTransportCompanies) 
 
    router := r.Group("/")
 
@@ -64,11 +68,10 @@ func main() {
 
        router.DELETE("/user/:id", users.Delete)
 
-       router.GET("/transportcompanies", transportcompanies.GetAlltransportcompanies)       // ดึงข้อมูลโปรโมชั่นทั้งหมด
-       router.GET("/transportcompanies/:id", transportcompanies.Gettransportcompanies)       // ดึงข้อมูลโปรโมชั่นตาม ID
-       router.POST("/transportcompanies", transportcompanies.Createtransportcompanies)       // สร้างโปรโมชั่นใหม่
-       router.PUT("/transportcompanies/:id", transportcompanies.Updatetransportcompanies)    // แก้ไขข้อมูลโปรโมชั่น
-       router.DELETE("/transportcompanies/:id", transportcompanies.Deletetransportcompanies)
+    //    router.GET("/transportcompanies/:id", transportcompanies.Gettransportcompanies)       // ดึงข้อมูลโปรโมชั่นตาม ID
+    //    router.POST("/transportcompanies", transportcompanies.Createtransportcompanies)       // สร้างโปรโมชั่นใหม่
+    //    router.PUT("/transportcompanies/:id", transportcompanies.Updatetransportcompanies)    // แก้ไขข้อมูลโปรโมชั่น
+
 
        router.GET("/transportvehicle", transportvehicle.GetAlltransportvehicle)       // ดึงข้อมูลโปรโมชั่นทั้งหมด
        router.GET("/transportvehicle/:id", transportvehicle.Gettransportvehicle)       // ดึงข้อมูลโปรโมชั่นตาม ID

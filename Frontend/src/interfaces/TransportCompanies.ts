@@ -1,3 +1,5 @@
+import { TransportVehiclesInterface } from "./TransportVehicles";
+
 export interface TransportCompaniesInterface {
   id?: number;
   TComName?: string;
@@ -8,7 +10,6 @@ export interface TransportCompaniesInterface {
   start_date?: string;  // Can use Date type if working with actual Date objects
   end_date?: string;  // Can use Date type if working with actual Date objects
   photo?: string;
-  year_of_manufacture?: number;  // Standardize to number type
-  container_capacity?: number;  // Standardize to number type
-  vehicle_name?: string;
+
+  transportVehicles: TransportVehiclesInterface[];
 }
