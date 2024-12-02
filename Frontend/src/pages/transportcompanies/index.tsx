@@ -118,9 +118,15 @@ function TransportCompanies() {
           ))}
         </ul>
       ),
-    }
-
-    ,
+    },
+    {
+      title: "Select",
+      render: (record) => (
+        <Link to={`/transportcompanies/form`}>
+          <Button type="default">Form</Button>
+        </Link>
+      ),
+    },
     {
       title: "Edit",
       render: (record) => (

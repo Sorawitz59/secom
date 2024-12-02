@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import "../../App.css";
 
-import { UserOutlined, DashboardOutlined } from "@ant-design/icons";
+import { UserOutlined, DashboardOutlined, SearchOutlined } from "@ant-design/icons";
 
 import { Breadcrumb, Layout, Menu, Button, message } from "antd";
 
@@ -24,6 +24,9 @@ import TransportCompaniesCreate from "../../pages/transportcompanies/create";
 
 import TransportCompaniesEdit from "../../pages/transportcompanies/edit";
 
+import TransportForm from "../../pages/transportcompanies/form";
+
+import TransportSeacrh from "../../pages/transportcompanies/search";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -108,6 +111,16 @@ const FullLayout: React.FC = () => {
                   <span>Company</span>
                 </Link>
               </Menu.Item>
+
+              <Menu.Item
+                key="transportsearch"
+                onClick={() => setCurrentPage("transportsearch")}
+              >
+                <Link to="/transportcompanies/search" style={{ color: "#fff" }}> {/* เปลี่ยนสีข้อความเป็นสีขาว */}
+                  <SearchOutlined />
+                  <span>Search</span>
+                </Link>
+              </Menu.Item>
             </Menu>
           </div>
 
@@ -145,6 +158,8 @@ const FullLayout: React.FC = () => {
 
 
               <Route path="/transportcompanies" element={<TransportCompanies />} />
+              <Route path="/transportcompanies/form" element={<TransportForm />} />
+              <Route path="/transportcompanies/search" element={<TransportSeacrh />} />
               <Route path="/transportcompanies/create" element={<TransportCompaniesCreate />} />
               <Route path="/transportcompanies/edit/:id" element={<TransportCompaniesEdit />} />
             </Routes>

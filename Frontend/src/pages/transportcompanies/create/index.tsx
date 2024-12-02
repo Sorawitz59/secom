@@ -28,29 +28,35 @@ function TransportCompaniesCreate() {
   const [image, setImage] = useState<string | undefined>(undefined);
 
   const onFinish = async (values: TransportCompaniesInterface) => {
-    let payload = {
-      ...values,
-      photo: image,
-    };
-
-    let res = await CreateTransportCompanies(payload);
-
-    if (res.status === 200) {
-      messageApi.open({
-        type: "success",
-        content: "สร้างข้อมูลบริษัทสำเร็จ",
-      });
-
-      setTimeout(() => {
-        navigate("/transportcompanies ");
-      }, 2000);
-    } else {
-      messageApi.open({
-        type: "error",
-        content: res.error,
-      });
+    try {
+      if (!image) {
+        messageApi.error("กรุณาอัปโหลดรูปภาพ!");
+        return;
+      }
+  
+      let payload = {
+        ...values,
+        photo: image,
+      };
+  
+      console.log("Payload:", payload);
+  
+      let res = await CreateTransportCompanies(payload);
+  
+      if (res.status === 200) {
+        messageApi.success("สร้างข้อมูลบริษัทสำเร็จ");
+        setTimeout(() => navigate("/transportcompanies"), 2000);
+      } else {
+        console.error("API Error:", res);
+        messageApi.error(res.error || "เกิดข้อผิดพลาดในการสร้างข้อมูลบริษัท");
+      }
+    } catch (error) {
+      console.error("System Error:", error);
+      messageApi.error("เกิดข้อผิดพลาดในระบบ กรุณาลองใหม่");
     }
   };
+  
+  
 
   const handleImageUpload = (file: RcFile) => {
     const reader = new FileReader();
@@ -195,8 +201,51 @@ function TransportCompaniesCreate() {
             </Col>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
-                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>ยานพาหนะ</span>}
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Vehicle Name</span>}
                 name="vehicle_name"
+                rules={[{ required: true, message: "กรุณากรอก Vehicle Name!" }]} >
+                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Vehicle Number</span>}
+                name="vehicle_number"
+                rules={[{ required: true, message: "กรุณากรอก Vehicle Number!" }]} >
+                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Container Capacity</span>}
+                name="capacity"
+                rules={[{ required: true, message: "กรุณากรอก Container Capacity!" }]} >
+                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Year Of Manufacture</span>}
+                name="manufacture"
+                rules={[{ required: true, message: "กรุณากรอก Manufacture!" }]} >
+                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Vehicle Model</span>}
+                name="vmodel"
+                rules={[{ required: true, message: "กรุณากรอก Model!" }]} >
+                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+              </Form.Item>
+            </Col>
+
+
+
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Description</span>}
+                name="description"
                 rules={[{ required: true, message: "กรุณากรอกยานพาหนะ!" }]} >
                 <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
               </Form.Item>

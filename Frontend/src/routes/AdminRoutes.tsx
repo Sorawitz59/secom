@@ -23,6 +23,10 @@ const TransportCompaniesCreate = Loadable(lazy(() => import("../pages/transportc
 
 const TransportCompaniesEdit = Loadable(lazy(() => import("../pages/transportcompanies/edit")));
 
+const TransportForm = Loadable(lazy(() => import("../pages/transportcompanies/form")));
+
+const TransportSeacrh = Loadable(lazy(() => import("../pages/transportcompanies/search")));
+
 const AdminRoutes = (isLoggedIn: boolean): RouteObject => {
 
   return {
@@ -38,6 +42,22 @@ const AdminRoutes = (isLoggedIn: boolean): RouteObject => {
         path: "/",
 
         element: <Dashboard />,
+
+      },
+
+      {
+
+        path: "/transportcompanies/form",
+
+        element: <TransportForm />,
+
+      },
+
+      {
+
+        path: "/transportcompanies/search",
+
+        element: <TransportSeacrh />,
 
       },
 

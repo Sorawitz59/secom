@@ -15,7 +15,7 @@ type TransportCompanies struct {
     PostalCode string    `json:"postal_code"`
     StartDate  time.Time `json:"start_date"`
     EndDate    time.Time `json:"end_date"`
-    Photo      string    `gorm:"type:longtext" json:"photo"`
+    Photo      string    `gorm:"type:longtext" json:"photocom"`
 	TransportVehicles []TransportVehicle `gorm:"foreignKey:TransportCompaniesID"`
 
 }

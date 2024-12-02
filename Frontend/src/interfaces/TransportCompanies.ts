@@ -2,7 +2,7 @@ import { TransportVehiclesInterface } from "./TransportVehicles";
 
 export interface TransportCompaniesInterface {
   id?: number;
-  TComName?: string;
+  CompanyName?: string;
   Contact?: string;
   Email?: string;
   Address?: string;

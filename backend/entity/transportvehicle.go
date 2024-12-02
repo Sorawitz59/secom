@@ -8,7 +8,7 @@ import (
 
 type TransportVehicle struct {
 	gorm.Model
-	Photo             string    `gorm:"type:longtext" json:"photo"`
+	Photo             string    `gorm:"type:longtext" json:"photovehicle"`
 	VehicleName       string    `json:"vehicle_name"`
 	VehicleNumber     string    `json:"vehicle_number"`
 	ContainerCapacity int       `json:"capacity"`
