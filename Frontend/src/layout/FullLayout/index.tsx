@@ -140,14 +140,14 @@ const FullLayout: React.FC = () => {
 
 
       <Layout>
-        <Header style={{ padding: 0, background: "#DAD6EF" }} />
-        <Content style={{ margin: "0 16px", background: "#DAD6EF" }}>
+        <Header style={{ padding: 0, background: "#d3e5f7" }} />
+        <Content style={{ margin: "0 16px", background: "#d3e5f7" }}>
           <Breadcrumb style={{ margin: "16px 0" }} />
           <div
             style={{
               padding: 24,
               minHeight: "100%",
-              background: "#DAD6EF",
+              background: "#d3e5f7",
             }}
           >
             <Routes>
@@ -168,7 +168,7 @@ const FullLayout: React.FC = () => {
         <Footer
           style={{
             textAlign: "center",
-            background: "#DAD6EF",
+            background: "#d3e5f7",
           }}
         >
           HarryFaster

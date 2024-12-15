@@ -20,6 +20,7 @@ import {
 } from "../../services/https/index";
 import { TransportCompaniesInterface } from "../../interfaces/TransportCompanies";
 import { TransportVehiclesInterface } from "../../interfaces/TransportVehicles";
+import './Home.css'; // นำเข้าไฟล์ CSS ที่คุณสร้าง
 
 const { Option } = Select;
 
@@ -94,6 +95,11 @@ function TransportCompanies() {
     setFilteredCompanies(sortedCompanies);
   }, [sortOrder, searchText, companies]);
 
+  // Define row class name for alternating row colors
+  const rowClassName = (record: TransportCompaniesInterface, index: number) => {
+    return index % 2 === 0 ? 'even-row' : 'odd-row';
+  };
+
   const columns: ColumnsType<TransportCompaniesInterface> = [
     {
       title: "Photo",
@@ -150,7 +156,14 @@ function TransportCompanies() {
   ];
 
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        padding: "20px",
+        borderRadius: "10px",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       {contextHolder}
       <Row>
         <Col span={24} style={{ textAlign: "center" }}>
@@ -201,11 +214,12 @@ function TransportCompanies() {
             rowKey="ID"
             columns={columns}
             dataSource={filteredCompanies}
+            rowClassName={rowClassName}
             style={{ width: "100%" }}
           />
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -65,7 +65,7 @@ function TransportCompaniesCreate() {
     <div style={{ fontFamily: 'Kanit, sans-serif', padding: '20px' }}>
       {contextHolder}
       <Card style={{ maxWidth: '80%', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '24px', color: 'black', fontFamily: 'Kanit, sans-serif' }}>เพิ่มข้อมูลบริษัทขนส่ง</h2>
+        <h2 style={{ fontSize: '24px', color: 'black', fontFamily: 'Kanit, sans-serif' }}>FORM</h2>
         <Divider />
         <Form
           name="basic"
@@ -107,7 +107,7 @@ function TransportCompaniesCreate() {
                 <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
               </Form.Item>
             </Col>
-            <Col xs={24} sm={24} md={12}>
+            {/* <Col xs={24} sm={24} md={12}>
               <Form.Item
                 label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>ที่อยู่</span>}
                 name="address"
@@ -243,7 +243,7 @@ function TransportCompaniesCreate() {
                 rules={[{ required: true, message: "กรุณากรอกยานพาหนะ!" }]} >
                 <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
               </Form.Item>
-            </Col>
+            </Col> */}
           </Row>
           <Row justify="end">
             <Col style={{ marginTop: "40px" }}>

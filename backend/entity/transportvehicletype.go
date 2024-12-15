@@ -6,7 +6,7 @@ import (
 
 type TransportVehicleType struct {
 	gorm.Model
-	ID string `json:"description"`
+	ID         uint      `gorm:"primaryKey"`
 	Weight      float32 `json:"weight"`
 	Description string  `json:"description"`
 

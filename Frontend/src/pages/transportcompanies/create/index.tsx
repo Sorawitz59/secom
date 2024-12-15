@@ -15,10 +15,12 @@ import {
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { TransportCompaniesInterface } from "../../../interfaces/TransportCompanies";
+import { TransportVehiclesInterface } from "../../../interfaces/TransportVehicles";
 import { CreateTransportCompanies } from "../../../services/https";
+import { CreateTransportVehicle } from "../../../services/https";
 import { useNavigate, Link } from "react-router-dom";
 import { RcFile } from "antd/es/upload/interface";
-
+import {InputNumber} from 'antd';
 const { RangePicker } = DatePicker;
 
 function TransportCompaniesCreate() {
@@ -33,16 +35,16 @@ function TransportCompaniesCreate() {
         messageApi.error("กรุณาอัปโหลดรูปภาพ!");
         return;
       }
-  
+
       let payload = {
         ...values,
         photo: image,
       };
-  
+
       console.log("Payload:", payload);
-  
+
       let res = await CreateTransportCompanies(payload);
-  
+
       if (res.status === 200) {
         messageApi.success("สร้างข้อมูลบริษัทสำเร็จ");
         setTimeout(() => navigate("/transportcompanies"), 2000);
@@ -55,8 +57,35 @@ function TransportCompaniesCreate() {
       messageApi.error("เกิดข้อผิดพลาดในระบบ กรุณาลองใหม่");
     }
   };
-  
-  
+
+  const onFinishVehicle = async (values: TransportVehiclesInterface) => {
+    try {
+      if (!image) {
+        messageApi.error("กรุณาอัปโหลดรูปภาพ!");
+        return;
+      }
+
+      let payload = {
+        ...values,
+        photo: image,
+      };
+
+      console.log("Payload:", payload);
+
+      let res = await CreateTransportVehicle(payload);
+
+      if (res.status === 200) {
+        messageApi.success("สร้างข้อมูลยานพาหนะสำเร็จ");
+        setTimeout(() => navigate("/transportvehicle"), 2000);
+      } else {
+        console.error("API Error:", res);
+        messageApi.error(res.error || "เกิดข้อผิดพลาดในการสร้างข้อมูลยานพาหนะ");
+      }
+    } catch (error) {
+      console.error("System Error:", error);
+      messageApi.error("เกิดข้อผิดพลาดในระบบ กรุณาลองใหม่");
+    }
+  };
 
   const handleImageUpload = (file: RcFile) => {
     const reader = new FileReader();
@@ -71,7 +100,7 @@ function TransportCompaniesCreate() {
     <div style={{ fontFamily: 'Kanit, sans-serif', padding: '20px' }}>
       {contextHolder}
       <Card style={{ maxWidth: '80%', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '24px', color: 'black', fontFamily: 'Kanit, sans-serif' }}>เพิ่มข้อมูลบริษัทขนส่ง</h2>
+        <h2 style={{ fontSize: '24px', color: 'black', fontFamily: 'Kanit, sans-serif' }}>เพิ่มข้อมูล บริษัทขนส่ง</h2>
         <Divider />
         <Form
           name="basic"
@@ -217,18 +246,23 @@ function TransportCompaniesCreate() {
             </Col>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
-                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Container Capacity</span>}
+                label={<span style={{ fontSize: '16px', color: '#000', fontFamily: 'Kanit, sans-serif' }}>Container Capacity</span>}
                 name="capacity"
                 rules={[{ required: true, message: "กรุณากรอก Container Capacity!" }]} >
-                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+                <InputNumber
+                  style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }}
+                  min={0}
+                />
               </Form.Item>
             </Col>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
-                label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Year Of Manufacture</span>}
+                label={<span style={{ fontSize: '16px', color: '#000', fontFamily: 'Kanit, sans-serif' }}>Year Of Manufacture</span>}
                 name="manufacture"
                 rules={[{ required: true, message: "กรุณากรอก Manufacture!" }]} >
-                <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
+                <InputNumber
+                  style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }}
+                />
               </Form.Item>
             </Col>
             <Col xs={24} sm={24} md={12}>
@@ -240,13 +274,21 @@ function TransportCompaniesCreate() {
               </Form.Item>
             </Col>
 
-
-
+            <Col xs={24} sm={24} md={12}>
+              <Form.Item
+                label={<span style={{ fontSize: '16px', color: '#000', fontFamily: 'Kanit, sans-serif' }}>Weight</span>}
+                name="weight"
+                rules={[{ required: true, message: "กรุณากรอก Weight!" }]} >
+                <InputNumber
+                  style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }}
+                />
+              </Form.Item>
+            </Col>
             <Col xs={24} sm={24} md={12}>
               <Form.Item
                 label={<span style={{ fontSize: '16px', color: '#black', fontFamily: 'Kanit, sans-serif' }}>Description</span>}
                 name="description"
-                rules={[{ required: true, message: "กรุณากรอกยานพาหนะ!" }]} >
+                rules={[{ required: true, message: "กรุณากรอก Description!" }]} >
                 <Input style={{ fontSize: '16px', borderRadius: '8px', border: '1px solid black', color: 'black' }} />
               </Form.Item>
             </Col>

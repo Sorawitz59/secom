@@ -42,11 +42,14 @@ async function GetTransportCompaniesById(id: string) {
 }
 
 async function CreateTransportCompanies(data: TransportCompaniesInterface) {
-  return await axios
-    .post(`${apiUrl}/transportcompanies`, data, requestOptions)
-    .then((res) => res)
-    .catch((e) => e.response);
+  try {
+    const response = await axios.post(`${apiUrl}/transportcompanies`, data, requestOptions);
+    return response; // ส่ง response กลับเมื่อสำเร็จ
+  } catch (error: any) {
+    return error.response; // จัดการและส่ง error response กลับเมื่อเกิดข้อผิดพลาด
+  }
 }
+
 
 async function UpdateTransportCompaniesById(id: string, data: TransportCompaniesInterface) {
   return await axios

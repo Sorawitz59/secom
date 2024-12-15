@@ -17,7 +17,4 @@ type TransportCompanies struct {
     EndDate    time.Time `json:"end_date"`
     Photo      string    `gorm:"type:longtext" json:"photocom"`
 	TransportVehicles []TransportVehicle `gorm:"foreignKey:TransportCompaniesID"`
-
 }
-
-

@@ -149,7 +149,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle1.png",
             VehicleName:          "Truck Model A",
-            VehicleNumber:        "123-ABC",
+            VehicleNumber:        "123",
             ContainerCapacity:    1000,
             YearOfManufacture:    2020,
             VehicleModel:         "Model A",
@@ -161,7 +161,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle2.png",
             VehicleName:          "Truck Model B",
-            VehicleNumber:        "456-DEF",
+            VehicleNumber:        "456",
             ContainerCapacity:    1500,
             YearOfManufacture:    2021,
             VehicleModel:         "Model B",
@@ -173,7 +173,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle3.png",
             VehicleName:          "Truck Model C",
-            VehicleNumber:        "789-GHI",
+            VehicleNumber:        "789",
             ContainerCapacity:    2000,
             YearOfManufacture:    2019,
             VehicleModel:         "Model C",
@@ -185,7 +185,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle4.png",
             VehicleName:          "Truck Model D",
-            VehicleNumber:        "101-JKL",
+            VehicleNumber:        "101",
             ContainerCapacity:    2500,
             YearOfManufacture:    2021,
             VehicleModel:         "Model D",
@@ -197,7 +197,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle5.png",
             VehicleName:          "Truck Model E",
-            VehicleNumber:        "202-MNO",
+            VehicleNumber:        "202",
             ContainerCapacity:    1800,
             YearOfManufacture:    2018,
             VehicleModel:         "Model E",
@@ -209,7 +209,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle6.png",
             VehicleName:          "Truck Model F",
-            VehicleNumber:        "303-PQR",
+            VehicleNumber:        "303",
             ContainerCapacity:    3000,
             YearOfManufacture:    2022,
             VehicleModel:         "Model F",
@@ -221,7 +221,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle7.png",
             VehicleName:          "Truck Model G",
-            VehicleNumber:        "404-STU",
+            VehicleNumber:        "404",
             ContainerCapacity:    2200,
             YearOfManufacture:    2020,
             VehicleModel:         "Model G",
@@ -233,7 +233,7 @@ func SetupDatabase() {
         {
             Photo:                "https://example.com/vehicle8.png",
             VehicleName:          "Truck Model H",
-            VehicleNumber:        "505-VWX",
+            VehicleNumber:        "505",
             ContainerCapacity:    1600,
             YearOfManufacture:    2017,
             VehicleModel:         "Model H",
